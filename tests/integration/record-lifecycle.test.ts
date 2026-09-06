@@ -79,6 +79,7 @@ describe("governed record lifecycle", () => {
 
   it("denies cross-user and anonymous revision/consent reads", async () => {
     const ownerRows = await owner.client.from("record_revisions").select("id");
+    console.error("record_revisions owner query:", ownerRows.error);
     const otherRows = await other.client.from("record_revisions").select("id");
     const anon = createClient<Database>(url, anonKey);
     const anonRows = await anon.from("record_revisions").select("id");

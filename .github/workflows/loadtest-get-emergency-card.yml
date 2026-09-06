@@ -121,7 +121,8 @@ jobs:
       # requests are not reliable on GitHub-hosted runners and previously
       # stopped this workflow before the load test could run.
       - name: Set up k6
-        uses: grafana/setup-k6-action@v1
+        # v1.2.1
+        uses: grafana/setup-k6-action@c00053c996b4061198c9c24a00474b748abdf8b7
 
       - name: Run k6 load test
         env:

@@ -82,7 +82,8 @@ describe("governed record lifecycle", () => {
     const otherRows = await other.client.from("record_revisions").select("id");
     const anon = createClient<Database>(url, anonKey);
     const anonRows = await anon.from("record_revisions").select("id");
-    expect(ownerRows.data?.length).toBeGreaterThan(0);
+    expect(ownerRows.error).toBeNull();
+    expect(ownerRows.data).toHaveLength(2);
     expect(otherRows.data).toEqual([]);
     expect(anonRows.error).not.toBeNull();
   });
